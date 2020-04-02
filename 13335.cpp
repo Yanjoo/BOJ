@@ -1,13 +1,13 @@
 #include <iostream>
-#include <stack>
+#include <queue>
 
 using namespace std;
 
 int n, w, L;
-int truck[1000];
-stack<pair<int,int>> st;
-bool start[1000];
+queue<int> q;
 int result;
+int truck[1000];
+int cur_weight;
 
 int main()
 {
@@ -16,37 +16,27 @@ int main()
 
     cin >> n >> w >> L;
     
+    for (int i=0; i<n; i++) cin >> truck[i];
+
     for (int i=0; i<n; i++)
     {
-        int weight;
-        cin >> weight;
-        if (st.empty())
-            st.push({weight, 1});
-        else
+        while (true)
         {
-            if (st.top().first + weight <= L && 
-                st.top().second + 1 <= w)
+            if (q.size() == w)
             {
-                weight += st.top().first;
-                int num = st.top().second + 1;
-                st.pop();
-                st.push({weight, num});
+                cur_weight -= q.front();
+                q.pop();
             }
-            else
-            {
-                st.push({weight, 1});
-            }
+            if (truck[i] + cur_weight <= L) break;
+            q.push(0);
+            result++;
         }
+        q.push(truck[i]);
+        cur_weight += truck[i];
+        result++;
     }
 
-    while (!st.empty())
-    {
-        result += w / st.top().second;
-        st.pop();
-    }
-
-    cout << result + 1;
-
+    cout << result + w;
 
     return 0;
 }
