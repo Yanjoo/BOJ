@@ -2,8 +2,8 @@
 
 using namespace std;
 
-int on[4], out[4];
 int cnt;
+int result;
 
 int main()
 {
@@ -12,13 +12,13 @@ int main()
 
     for (int i=0; i<4; i++)
     {
-        cin >> out[i] >> on[i];
-        int t = cnt;
-        t = t - out[i] + on[i];
-        if (t > cnt) cnt = t;
+        int x, y;
+        cin >> x >> y;
+        cnt = cnt - x + y;
+        if (result < cnt) result = cnt;
     }
 
-    cout << cnt;
+    cout << result;
 
     return 0;
 }
