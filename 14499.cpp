@@ -6,7 +6,7 @@ int N, M, K;
 int x, y;
 int map[20][20];
 int d;
-int dx[4] = {0, 0, -1, 1};
+int dx[4] = {0, 0, -1, 1}; // 동 서 북 남
 int dy[4] = {1, -1, 0, 0};
 int dice[6]; // 상 뒤 우 좌 앞 하
 int temp[6];
