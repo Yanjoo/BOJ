@@ -6,7 +6,7 @@ using namespace std;
 int N;
 int a[10000];
 
-bool nextPermutation(int * a, int n)
+bool prevPermutation(int * a, int n)
 {
     int i = n - 1;
     while (i > 0 && a[i-1] < a[i]) i--;
@@ -32,7 +32,7 @@ int main()
     for (int i=0; i<N; i++)
         cin >> a[i];
 
-    if (nextPermutation(a, N)) 
+    if (prevPermutation(a, N)) 
         for (int i=0; i<N; i++) 
             cout << a[i] << ' ';
     else cout << -1;
